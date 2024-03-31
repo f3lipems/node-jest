@@ -1,7 +1,7 @@
-import express from 'express'
+import express, { Application } from 'express'
 
 class App {
-    private app: express.Application
+    public app: Application
 
     constructor() {
         this.app = express()
@@ -15,7 +15,7 @@ class App {
     }
 
     routes() {
-        this.app.use('/', (res: any) => {
+        this.app.get('/', (req, res: any) => {
             return res.json({ ok: true })
         })
     }
@@ -27,4 +27,4 @@ class App {
     }
 }
 
-export { App }
+export { App } 
