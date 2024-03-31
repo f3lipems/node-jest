@@ -18,4 +18,9 @@ describe('First test', () => {
         expect(response.statusCode).toEqual(201)
         expect(response.body).toHaveProperty('id')
     })
+    
+    it('shoud check if get users', async () => {
+        const response = await request(app).get('/users')
+        expect(response.statusCode).toEqual(200)
+    })
 })
