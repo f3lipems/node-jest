@@ -8,4 +8,14 @@ describe('First test', () => {
         const response = await request(app).get('/')
         expect(response.body).toStrictEqual({ ok: true })
     })
+
+    it('shoud check if created user', async () => {
+        const response = await request(app).post('/user').send({
+            name: 'Felipe',
+            email: 'f3lipe.dev@gmail.com',
+            password: '123'
+        })
+        expect(response.statusCode).toEqual(201)
+        expect(response.body).toHaveProperty('id')
+    })
 })

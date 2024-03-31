@@ -1,4 +1,5 @@
 import express, { Application } from 'express'
+import crypto from 'crypto'
 
 class App {
     public app: Application
@@ -17,6 +18,14 @@ class App {
     routes() {
         this.app.get('/', (req, res: any) => {
             return res.json({ ok: true })
+        })
+
+        this.app.post('/user', (req, res: any) => {
+            const { email, password, name } = req.body
+            const id = crypto.randomUUID()
+            const data = { id, email, password, name }
+
+            return res.status(201).json(data)
         })
     }
 
